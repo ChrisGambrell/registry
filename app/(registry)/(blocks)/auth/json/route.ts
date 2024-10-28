@@ -22,7 +22,7 @@ export const GET = () =>
 			'@types/bcryptjs',
 			'@types/mdx',
 			'bcryptjs',
-			'next-auth',
+			'next-auth@beta',
 			'prisma',
 			'react-hot-toast',
 		],
