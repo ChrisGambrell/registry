@@ -50,9 +50,7 @@ export const GET = () =>
 			},
 		],
 		tailwind: {
-			config: {
-				plugins: ['require("tailwindcss-animate")'],
-			},
+			plugins: ['require("tailwindcss-animate")'],
 		},
 		cssVars: {},
 		meta: {},
