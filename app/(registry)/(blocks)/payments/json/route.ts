@@ -299,12 +299,14 @@ export const GET = () =>
 				content:
 					"import { loadStripe, Stripe } from '@stripe/stripe-js'\nimport { env } from '../env'\n\nlet stripePromise: Promise<Stripe | null>\n\nexport const getStripe = () => {\n\tif (!stripePromise) stripePromise = loadStripe(env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)\n\treturn stripePromise\n}\n",
 				type: 'registry:lib',
+				target: '~/lib/stripe/client.ts',
 			},
 			{
 				path: './lib/stripe/utils.ts',
 				content:
 					"import Stripe from 'stripe'\nimport { env } from '../env'\n\nexport const stripe = new Stripe(env.STRIPE_SECRET_KEY, { apiVersion: '2024-09-30.acacia' })\n\nexport const calculateTrialEndUnixTimestamp = (trialPeriodDays: number | null | undefined) => {\n\t// Check if trialPeriodDays is null, undefined, or less than 2 days\n\tif (trialPeriodDays === null || trialPeriodDays === undefined || trialPeriodDays < 2) {\n\t\treturn undefined\n\t}\n\n\tconst currentDate = new Date() // Current date and time\n\tconst trialEnd = new Date(currentDate.getTime() + (trialPeriodDays + 1) * 24 * 60 * 60 * 1000) // Add trial days\n\treturn Math.floor(trialEnd.getTime() / 1000) // Convert to Unix timestamp in seconds\n}\n\nexport const toDateTime = (secs: number) => {\n\tconst t = new Date(+0)\n\tt.setSeconds(secs)\n\treturn t\n}\n",
 				type: 'registry:lib',
+				target: '~/lib/stripe/utils.ts',
 			},
 			{
 				path: './lib/utils.ts',
